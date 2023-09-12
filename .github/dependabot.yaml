@@ -1,0 +1,21 @@
+---
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "."
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    labels:
+      - dependencies
+    commit-message:
+      prefix: "[PF-291]"
+      include: "scope"
+    groups:
+      minor:
+        patterns:
+        - "*"
+        update-types:
+        - "minor"
+        - "patch"
