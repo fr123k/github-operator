@@ -4,7 +4,7 @@ go 1.21.0
 
 require (
 	cloud.google.com/go/secretmanager v1.11.1
-	github.com/go-logr/logr v1.2.4
+	github.com/go-logr/logr v1.3.0
 	github.com/google/go-github/v54 v54.0.0
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/migueleliasweb/go-github-mock v0.0.19
