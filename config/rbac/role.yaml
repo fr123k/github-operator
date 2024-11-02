@@ -2,7 +2,6 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  creationTimestamp: null
   name: manager-role
 rules:
 - apiGroups:
@@ -21,13 +20,6 @@ rules:
   - secret.fr123k.uk
   resources:
   - githubsecrets/finalizers
-  verbs:
-  - get
-  - patch
-  - update
-- apiGroups:
-  - secret.fr123k.uk
-  resources:
   - githubsecrets/status
   verbs:
   - get
