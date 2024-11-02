@@ -1,7 +1,6 @@
 module github.com/fr123k/github-operator
 
-go 1.21.0
-toolchain go1.22.4
+go 1.23.2
 
 require (
 	cloud.google.com/go/secretmanager v1.13.1
