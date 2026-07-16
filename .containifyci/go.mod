@@ -2,10 +2,12 @@ module .containifyci
 
 go 1.23.2
 
-require github.com/containifyci/engine-ci/client v0.30.4
+require (
+	github.com/containifyci/engine-ci/client v0.30.4
+	github.com/containifyci/engine-ci/protos2 v0.26.3
+)
 
 require (
-	github.com/containifyci/engine-ci/protos2 v0.26.3 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
