@@ -29,6 +29,7 @@ import (
 	. "github.com/onsi/gomega"
 	"google.golang.org/api/option"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 
 	// v1 "k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes/scheme"
@@ -70,7 +71,7 @@ var (
 )
 
 var _ = BeforeSuite(func() {
-	os.Setenv("GITHUB_TOKEN", "GITHUB_TOKEN")
+	_ = os.Setenv("GITHUB_TOKEN", "GITHUB_TOKEN")
 
 	logf.SetLogger(zap.New(zap.WriteTo(GinkgoWriter), zap.UseDevMode(true)))
 	ctx, cancel = context.WithCancel(context.TODO())
@@ -139,7 +140,7 @@ var _ = BeforeSuite(func() {
 		gcloud.WithContext(ctx),
 		gcloud.WithOptions(option.WithEndpoint(fakeServerAddr),
 			option.WithoutAuthentication(),
-			option.WithGRPCDialOption(grpc.WithInsecure())),
+			option.WithGRPCDialOption(grpc.WithTransportCredentials(insecure.NewCredentials()))),
 	)
 
 	err = (&GithubSecretReconciler{

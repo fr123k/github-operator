@@ -33,7 +33,6 @@ import (
 	apimeta "k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/fr123k/github-operator/api/v1alpha1"
 	secretv1alpha1 "github.com/fr123k/github-operator/api/v1alpha1"
 	"github.com/fr123k/github-operator/pkg/config"
 	"github.com/fr123k/github-operator/pkg/gcloud"
@@ -76,7 +75,7 @@ func (r *GithubSecretReconciler) Reconcile(ctx context.Context, req ctrl.Request
 
 	// Fetch the Github Secret Operator Secret instance
 	instance := &secretv1alpha1.GithubSecret{}
-	err := r.Client.Get(context.TODO(), req.NamespacedName, instance)
+	err := r.Get(context.TODO(), req.NamespacedName, instance)
 	if err != nil {
 		if errors.IsNotFound(err) {
 			// Request object not found, could have been deleted after reconcile req.
@@ -99,7 +98,7 @@ func (r *GithubSecretReconciler) Reconcile(ctx context.Context, req ctrl.Request
 
 	repository := instance.Spec.Repository
 
-	secretsConfig := map[string]v1alpha1.Secrets{}
+	secretsConfig := map[string]secretv1alpha1.Secrets{}
 	for _, v := range instance.Spec.DependaBotSecrets.Secrets {
 		secretsConfig[v.Name] = v
 	}
@@ -163,7 +162,7 @@ func (r *GithubSecretReconciler) finalize(ctx context.Context, log logr.Logger, 
 	}
 
 	akSecret := v1.Secret{}
-	err := r.Client.Get(ctx, ke, &akSecret)
+	err := r.Get(ctx, ke, &akSecret)
 	if err != nil {
 		return err
 	}
@@ -171,7 +170,7 @@ func (r *GithubSecretReconciler) finalize(ctx context.Context, log logr.Logger, 
 	log.Info("Read Configuration Github Secret Operator", "Secret", akSecret)
 
 	for k, v := range akSecret.Data {
-		os.Setenv(k, string(v))
+		_ = os.Setenv(k, string(v))
 	}
 
 	cfg, ctx := config.Configure()
