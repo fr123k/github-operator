@@ -98,7 +98,7 @@ func (r *GithubSecretReconciler) Reconcile(ctx context.Context, req ctrl.Request
 
 	repository := instance.Spec.Repository
 
-	secretsConfig := map[string]v1alpha1.Secrets{}
+	secretsConfig := map[string]secretv1alpha1.Secrets{}
 	for _, v := range instance.Spec.DependaBotSecrets.Secrets {
 		secretsConfig[v.Name] = v
 	}
