@@ -92,6 +92,4 @@ type GithubSecretList struct {
 	Items           []GithubSecret `json:"items"`
 }
 
-func init() {
-	SchemeBuilder.Register(&GithubSecret{}, &GithubSecretList{})
-}
+
