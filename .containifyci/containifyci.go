@@ -15,7 +15,7 @@ import (
 func main() {
 	os.Chdir("../")
 	opts := build.NewGoServiceBuild("github-operator")
-	opts.Image = "fr123k/github-operator"
+	opts.Image = ""
 	opts.ContainerFiles = map[string]*protos2.ContainerFile{
 		"build": DockerFile(),
 	}
@@ -25,7 +25,7 @@ func main() {
 func DockerFile() *protos2.ContainerFile {
 	return &protos2.ContainerFile{
 		Name: "golang-1.26.4-alpine-custom",
-		Content: `FROM golang:1.23-alpine
+		Content: `FROM golang:1.26-alpine
 
 RUN apk --no-cache add git openssh-client curl bash && \
   rm -rf /var/cache/apk/*
@@ -43,7 +43,7 @@ RUN go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest && \
   go clean -modcache
 
 # Also try downloading envtest binaries directly as fallback
-RUN curl -fsSL https://storage.googleapis.com/kubebuilder-tools/kubebuilder-tools-1.26.0-linux-amd64.tar.gz -o /tmp/kubebuilder-tools.tar.gz && \
+RUN curl -fsSL https://storage.googleapis.com/kubebuilder-tools/kubebuilder-tools-4.15.0-linux-amd64.tar.gz -o /tmp/kubebuilder-tools.tar.gz && \
   mkdir -p /usr/local/kubebuilder && \
   tar -xzf /tmp/kubebuilder-tools.tar.gz -C /usr/local/kubebuilder --strip-components=1 && \
   rm -f /tmp/kubebuilder-tools.tar.gz && \
