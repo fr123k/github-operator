@@ -30,6 +30,9 @@ func DockerFile() *protos2.ContainerFile {
 RUN apk --no-cache add git openssh-client curl bash && \
   rm -rf /var/cache/apk/*
 
+# Install golangci-lint (required by engine-ci build step)
+RUN go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.8.0
+
 # Install kubebuilder envtest binaries (etcd, kube-apiserver, kubectl)
 # Required by controller tests that use envtest
 RUN go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest && \
