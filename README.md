@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/fr123k/github-operator/tree/master.svg?style=svg)](https://circleci.com/gh/fr123k/github-operator/tree/master)
+[![CI](https://github.com/fr123k/github-operator/actions/workflows/pull-request.yaml/badge.svg)](https://github.com/fr123k/github-operator/actions/workflows/pull-request.yaml)
 [![DockerHub](https://img.shields.io/badge/dockerhub-fr123k%2Fgithub--operator-blue?style=plastic
 )](https://hub.docker.com/r/fr123k/github-operator)
 # github-operator

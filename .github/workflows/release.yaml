@@ -1,0 +1,19 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+
+permissions:
+  contents: write # for checkout
+  id-token: write # for authenticating to Google Cloud Platform
+  pull-requests: write # for updating pr
+
+jobs:
+  build-and-release:
+    uses: containifyci/.github/.github/workflows/release.yml@v1
+    secrets: inherit
