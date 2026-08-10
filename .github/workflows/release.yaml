@@ -15,5 +15,5 @@ permissions:
 
 jobs:
   build-and-release:
-    uses: containifyci/.github/.github/workflows/release.yml@v1.3.26
+    uses: containifyci/.github/.github/workflows/release.yml@v1.3.27
     secrets: inherit
