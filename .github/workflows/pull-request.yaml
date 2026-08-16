@@ -13,5 +13,5 @@ permissions:
 jobs:
   build:
     name: Build
-    uses: containifyci/.github/.github/workflows/pull-request.yml@v1.3.27
+    uses: containifyci/.github/.github/workflows/pull-request.yml@v1
     secrets: inherit
