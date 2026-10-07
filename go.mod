@@ -3,13 +3,13 @@ module github.com/fr123k/github-operator
 go 1.26.5
 
 require (
-	cloud.google.com/go/secretmanager v1.21.0
+	cloud.google.com/go/secretmanager v1.22.0
 	github.com/go-logr/logr v1.4.4
 	github.com/google/go-github/v54 v54.0.0
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/migueleliasweb/go-github-mock v1.5.0
 	github.com/onsi/ginkgo/v2 v2.33.0
-	github.com/onsi/gomega v1.43.1
+	github.com/onsi/gomega v1.44.0
 	github.com/stretchr/testify v1.12.1
 	golang.org/x/crypto v0.57.0
 	golang.org/x/oauth2 v0.37.0
@@ -18,7 +18,7 @@ require (
 	k8s.io/api v0.37.1
 	k8s.io/apimachinery v0.37.1
 	k8s.io/client-go v0.37.1
-	sigs.k8s.io/controller-runtime v0.25.1
+	sigs.k8s.io/controller-runtime v0.25.2
 )
 
 require (
